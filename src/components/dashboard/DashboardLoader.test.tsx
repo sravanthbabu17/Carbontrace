@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { DashboardLoader } from './DashboardLoader';
-import { loadInput, loadHistory } from '@/lib';
+import { loadInput, loadHistory, type FootprintInput } from '@/lib';
 
 vi.mock('@/lib', async (importOriginal) => {
   const actual = await importOriginal<typeof import('@/lib')>();
@@ -31,14 +31,14 @@ describe('DashboardLoader', () => {
   });
 
   it('renders DashboardView if inputs exist', async () => {
-    const mockInput = {
+    const mockInput: FootprintInput = {
       region: 'US',
-      transport: { carKm: 1000, flightHours: 5 },
-      home: { electricityKwh: 200, gasKwh: 100, renewablePct: 50 },
-      food: { diet: 'omnivore', meatDays: 3, localPct: 20 },
-      consumption: { shoppingSpend: 100, recyclePct: 50 },
+      transport: { carKmPerWeek: 100, carFuel: 'petrol', flightsLongHaulPerYear: 2 },
+      home: { electricityKwhPerMonth: 200, heatingFuel: 'gas', heatingAmountPerMonth: 50 },
+      food: { diet: 'omnivore', foodWaste: 'low' },
+      consumption: { shopping: 'average', recycles: true },
     };
-    vi.mocked(loadInput).mockReturnValue(mockInput as any);
+    vi.mocked(loadInput).mockReturnValue(mockInput);
     vi.mocked(loadHistory).mockReturnValue([]);
 
     render(<DashboardLoader />);
@@ -48,3 +48,4 @@ describe('DashboardLoader', () => {
     });
   });
 });
+

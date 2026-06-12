@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { DashboardView } from './DashboardView';
+import type { FootprintInput } from '@/lib';
 
 vi.mock('@/components/charts/lazy', () => ({
   CategoryBarChart: () => <div data-testid="bar-chart" />,
@@ -9,16 +10,16 @@ vi.mock('@/components/charts/lazy', () => ({
 }));
 
 describe('DashboardView', () => {
-  const mockInput = {
+  const mockInput: FootprintInput = {
     region: 'US',
-    transport: { carKm: 1000, flightHours: 5 },
-    home: { electricityKwh: 200, gasKwh: 100, renewablePct: 50 },
-    food: { diet: 'omnivore', meatDays: 3, localPct: 20 },
-    consumption: { shoppingSpend: 100, recyclePct: 50 },
+    transport: { carKmPerWeek: 100, carFuel: 'petrol', flightsLongHaulPerYear: 2 },
+    home: { electricityKwhPerMonth: 200, heatingFuel: 'gas', heatingAmountPerMonth: 50 },
+    food: { diet: 'omnivore', foodWaste: 'low' },
+    consumption: { shopping: 'average', recycles: true },
   };
 
   it('renders all sections: stats overview, charts, simulator, and tracker', () => {
-    render(<DashboardView input={mockInput as any} history={[]} />);
+    render(<DashboardView input={mockInput} history={[]} />);
 
     // Assert that the headline metric cards exist
     expect(screen.getByText('Annual footprint')).toBeInTheDocument();

@@ -147,7 +147,7 @@ describe('history persistence', () => {
       setItem() {
         throw new Error('Quota exceeded');
       },
-    } as any;
+    } as unknown as Storage;
     expect(saveInput(defaultFootprintInput)).toBe(false);
   });
 
@@ -157,7 +157,7 @@ describe('history persistence', () => {
       removeItem() {
         throw new Error('Remove error');
       },
-    } as any;
+    } as unknown as Storage;
     // Should not throw
     expect(() => clearGoal()).not.toThrow();
   });
