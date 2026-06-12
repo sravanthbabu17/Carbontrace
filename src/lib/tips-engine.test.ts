@@ -63,4 +63,22 @@ describe('generateTips', () => {
     const tips = generateTips(greenInput, calculateFootprint(greenInput));
     expect(tips).toHaveLength(0);
   });
+
+  it('adjusts shopping tip saving when user recycles', () => {
+    const inputWithRecycle = build({
+      consumption: { shopping: 'frequent', recycles: true },
+    });
+    const inputWithoutRecycle = build({
+      consumption: { shopping: 'frequent', recycles: false },
+    });
+    const tipsWith = generateTips(inputWithRecycle, calculateFootprint(inputWithRecycle));
+    const tipsWithout = generateTips(inputWithoutRecycle, calculateFootprint(inputWithoutRecycle));
+
+    const buyLessWith = tipsWith.find((t) => t.id === 'buy-less');
+    const buyLessWithout = tipsWithout.find((t) => t.id === 'buy-less');
+
+    expect(buyLessWith).toBeDefined();
+    expect(buyLessWithout).toBeDefined();
+    expect(buyLessWith!.estimatedSavingKg).toBeLessThan(buyLessWithout!.estimatedSavingKg);
+  });
 });

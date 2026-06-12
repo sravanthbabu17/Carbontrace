@@ -58,6 +58,7 @@ describe('storage availability', () => {
     expect(loadInput()).toBeNull();
     expect(saveInput(defaultFootprintInput)).toBe(false);
     expect(loadHistory()).toEqual([]);
+    expect(() => clearGoal()).not.toThrow();
   });
 });
 
@@ -119,5 +120,45 @@ describe('history persistence', () => {
     expect(history).toHaveLength(100);
     expect(history[0]?.date).toBe('d5');
     expect(history[history.length - 1]?.date).toBe('d104');
+  });
+
+  it('fails safely when localStorage access throws an error', () => {
+    Object.defineProperty(globalThis, 'localStorage', {
+      get() {
+        throw new Error('Access denied');
+      },
+      configurable: true,
+    });
+    try {
+      expect(isStorageAvailable()).toBe(false);
+      expect(loadInput()).toBeNull();
+    } finally {
+      Object.defineProperty(globalThis, 'localStorage', {
+        value: createMockStorage(),
+        writable: true,
+        configurable: true,
+      });
+    }
+  });
+
+  it('fails safely when localStorage.setItem throws an error', () => {
+    globalRef.localStorage = {
+      ...createMockStorage(),
+      setItem() {
+        throw new Error('Quota exceeded');
+      },
+    } as any;
+    expect(saveInput(defaultFootprintInput)).toBe(false);
+  });
+
+  it('fails safely when localStorage.removeItem throws an error', () => {
+    globalRef.localStorage = {
+      ...createMockStorage(),
+      removeItem() {
+        throw new Error('Remove error');
+      },
+    } as any;
+    // Should not throw
+    expect(() => clearGoal()).not.toThrow();
   });
 });
