@@ -2,7 +2,7 @@
 
 > Understand, track, and reduce your personal carbon footprint — privately, in your browser.
 
-**Live demo:** [Insert your deployed URL here]
+**Live demo:**: https://carbontrace-opal.vercel.app/
 
 CarbonTrace turns a two-minute questionnaire into a personalized climate action plan: your
 estimated annual CO₂e, a category breakdown, how you compare to regional averages and a
