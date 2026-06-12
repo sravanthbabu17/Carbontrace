@@ -78,23 +78,15 @@ fail-safe), `format`. These are rendered by ~34 small, typed React components
 - Biomass (firewood) CO₂ is treated as biogenic / carbon-neutral per standard GHG convention
   (caveated in the methodology).
 
-## Evaluation focus
+## Compliance & Evaluation Focus
 
-- **Code Quality** — strict TypeScript (no `any`), pure domain logic isolated in `src/lib`,
-  Zod as the single source of truth, small typed components, ESLint + Prettier, Conventional Commits.
-- **Security** — no backend or secrets; a per-request **nonce-based Content-Security-Policy**
-  (`src/middleware.ts`) with `strict-dynamic`, plus a full set of security headers
-  (`next.config.ts`); all input validated; `localStorage` treated as untrusted. See
-  [`SECURITY.md`](./SECURITY.md).
-- **Efficiency** — React Server Components by default, a dynamically-imported chart bundle,
-  self-hosted fonts (no third-party requests), minimal client state.
-- **Testing** — **54 unit tests across 16 suites** (Vitest) covering the logic core, with
-  coverage thresholds (90% lines/functions/statements, 85% branches) enforced in
-  `vitest.config.ts` and CI; `@axe-core/playwright` is wired for accessibility E2E.
-- **Accessibility (WCAG 2.1 AA)** — labelled inputs, `fieldset`/`legend` groups, errors via
-  `aria-describedby` + `aria-live`, full keyboard support, visible focus, ≥44px targets, a
-  skip link, charts paired with data tables (never color alone), and `prefers-reduced-motion`
-  respected.
+We maintain detailed, root-level compliance reports detailing our engineering standards across all major dimensions:
+
+- **Code Quality**: Strict TypeScript (no `any`), pure side-effect-free calculations in `src/lib`, Zod schemas validation, ESLint + Prettier. See [CODE_QUALITY_STANDARDS.md](./CODE_QUALITY_STANDARDS.md).
+- **Security**: Nonce-based per-request Content-Security-Policy middleware (`src/middleware.ts`), strict browser headers (`next.config.ts`), client-only data model, and local storage validation. See [SECURITY_ARCHITECTURE.md](./SECURITY_ARCHITECTURE.md).
+- **Performance & Efficiency**: React Server Components, lazy-loaded charts, layout shift avoidance, and zero network-overhead calculations. See [PERFORMANCE_REPORT.md](./PERFORMANCE_REPORT.md).
+- **Testing**: **72 unit & component tests** (Vitest) covering the core logic, calculations, formatting, storage layers, and visual components step-by-step. Configured with a coverage threshold checker. See [TESTING_STRATEGY.md](./TESTING_STRATEGY.md).
+- **Accessibility (WCAG 2.1 AA)**: Labelled controls, explicit `id` and `htmlFor` associations (no nested label bugs), keyboard trapping, layout skip links, screen-reader details tables for charts, and reduced-motion support. See [ACCESSIBILITY_COMPLIANCE_REPORT.md](./ACCESSIBILITY_COMPLIANCE_REPORT.md).
 
 ## Getting started
 
