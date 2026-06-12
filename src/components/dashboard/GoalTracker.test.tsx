@@ -47,7 +47,7 @@ describe('GoalTracker', () => {
       expect.objectContaining({
         targetTonnes: 8,
         baselineTonnes: 10,
-      })
+      }),
     );
   });
 });

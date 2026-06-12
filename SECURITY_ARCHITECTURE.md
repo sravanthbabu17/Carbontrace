@@ -8,14 +8,14 @@ This document describes the design principles, headers, and validations securing
 
 We implement direct defenses against common web application vulnerabilities:
 
-| Threat | Mitigation |
-|---|---|
-| **Cross-Site Scripting (XSS)** | A strict Content-Security-Policy (CSP) headers policy using per-request script nonces and `'strict-dynamic'`. React 19 escapes all dynamic data rendering by default. |
-| **Clickjacking** | Response headers set `frame-ancestors 'none'` and `X-Frame-Options: DENY` via CSP and middleware. |
-| **MIME Sniffing** | Automated browser overrides are blocked by setting `X-Content-Type-Options: nosniff`. |
-| **Man-in-the-Middle (MitM)** | Strict-Transport-Security (HSTS) with `max-age=31536000; includeSubDomains` is enforced by our hosting provider (Vercel). |
-| **Data Breach / Leakage** | **Zero server roundtrips.** All calculation inputs and results are processed client-side. No databases, third-party trackers, or analytics APIs receive user inputs. |
-| **Input Injection / Corruption** | Strict Zod validation boundaries (`src/lib/schemas.ts`) validate inputs prior to storage or calculations. |
+| Threat                           | Mitigation                                                                                                                                                            |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Cross-Site Scripting (XSS)**   | A strict Content-Security-Policy (CSP) headers policy using per-request script nonces and `'strict-dynamic'`. React 19 escapes all dynamic data rendering by default. |
+| **Clickjacking**                 | Response headers set `frame-ancestors 'none'` and `X-Frame-Options: DENY` via CSP and middleware.                                                                     |
+| **MIME Sniffing**                | Automated browser overrides are blocked by setting `X-Content-Type-Options: nosniff`.                                                                                 |
+| **Man-in-the-Middle (MitM)**     | Strict-Transport-Security (HSTS) with `max-age=31536000; includeSubDomains` is enforced by our hosting provider (Vercel).                                             |
+| **Data Breach / Leakage**        | **Zero server roundtrips.** All calculation inputs and results are processed client-side. No databases, third-party trackers, or analytics APIs receive user inputs.  |
+| **Input Injection / Corruption** | Strict Zod validation boundaries (`src/lib/schemas.ts`) validate inputs prior to storage or calculations.                                                             |
 
 ---
 

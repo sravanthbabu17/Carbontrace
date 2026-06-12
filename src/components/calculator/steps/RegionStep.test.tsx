@@ -7,7 +7,7 @@ describe('RegionStep', () => {
   it('renders all region options and calls onChange when selected', async () => {
     const user = userEvent.setup();
     const onChange = vi.fn();
-    
+
     render(<RegionStep value="GLOBAL" onChange={onChange} errors={{}} />);
 
     // Check that legend exists
@@ -22,12 +22,18 @@ describe('RegionStep', () => {
 
     // Select United States option
     await user.click(screen.getByLabelText(/United States/i));
-    
+
     expect(onChange).toHaveBeenCalledWith('US');
   });
 
   it('renders error messages when provided', () => {
-    render(<RegionStep value="GLOBAL" onChange={vi.fn()} errors={{ region: 'Region selection is required' }} />);
+    render(
+      <RegionStep
+        value="GLOBAL"
+        onChange={vi.fn()}
+        errors={{ region: 'Region selection is required' }}
+      />,
+    );
     expect(screen.getByText('Region selection is required')).toBeInTheDocument();
   });
 });

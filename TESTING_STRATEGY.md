@@ -8,11 +8,11 @@ This document outlines the testing methodologies, coverage thresholds, and frame
 
 We implement a multi-layered testing setup that combines unit tests for calculation logic with component integration tests for user interface elements.
 
-| Layer | Focus | Framework & Libraries | Coverage Target | Current |
-|---|---|---|---|---|
-| **Core Library** | Calculation logic, schemas, formatting, storage, and tips engines | Vitest | 90% | **100%** (Functions), **98.96%** (Lines) |
-| **Component Steps** | Multi-step form rendering, inputs, step focus, validation errors | Vitest + JSDOM + Testing Library | 90% | **100%** (Functions) |
-| **Dashboard Islands** | Goal tracker progress computations, interactive simulator updates | Vitest + JSDOM + Testing Library | 90% | **100%** (Functions) |
+| Layer                 | Focus                                                             | Framework & Libraries            | Coverage Target | Current                                  |
+| --------------------- | ----------------------------------------------------------------- | -------------------------------- | --------------- | ---------------------------------------- |
+| **Core Library**      | Calculation logic, schemas, formatting, storage, and tips engines | Vitest                           | 90%             | **100%** (Functions), **98.96%** (Lines) |
+| **Component Steps**   | Multi-step form rendering, inputs, step focus, validation errors  | Vitest + JSDOM + Testing Library | 90%             | **100%** (Functions)                     |
+| **Dashboard Islands** | Goal tracker progress computations, interactive simulator updates | Vitest + JSDOM + Testing Library | 90%             | **100%** (Functions)                     |
 
 ---
 
@@ -21,16 +21,19 @@ We implement a multi-layered testing setup that combines unit tests for calculat
 We run all unit and component tests locally or in integration pipelines using Vitest:
 
 ### Running unit/component tests
+
 ```bash
 npm run test
 ```
 
 ### Running tests with coverage report
+
 ```bash
 npm run test:coverage
 ```
 
 The test coverage config is defined in `vitest.config.ts` using the V8 engine:
+
 - Minimum coverage thresholds are enforced:
   - Statements: 90%
   - Lines: 90%
@@ -48,7 +51,7 @@ The test coverage config is defined in `vitest.config.ts` using the V8 engine:
   - `schemas.test.ts`: Enforces validation bounds (no negative values, correct string options, bounds clamping).
   - `storage.test.ts`: Verifies client local storage reading, writing, and prefix sanitizing.
 
-- **Component Steps & UI (`src/components/**/*.test.tsx`)**:
+- **Component Steps & UI (`src/components/**/\*.test.tsx`)\*\*:
   - `RegionStep.test.tsx`: Verifies region radio selections update the application state.
   - `TransportStep.test.tsx`: Tests vehicle selects and distance inputs.
   - `HomeStep.test.tsx`: Tests that switching fuels resets the input amount only when units differ.

@@ -24,7 +24,7 @@ describe('ActionSimulator', () => {
 
     // Check header
     expect(screen.getByText('Action Simulator')).toBeInTheDocument();
-    
+
     // Check baseline, simulated, saved readouts
     expect(screen.getByText('Current')).toBeInTheDocument();
     expect(screen.getByText('Simulated')).toBeInTheDocument();
