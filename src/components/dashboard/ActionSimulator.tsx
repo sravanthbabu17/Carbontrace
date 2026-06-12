@@ -35,16 +35,12 @@ export function ActionSimulator({ input }: ActionSimulatorProps) {
   const [recycles, setRecycles] = useState(input.consumption.recycles);
 
   // Construct simulated input
-  const simulatedCarKm =
-    input.transport.carKmPerWeek * (1 - carReductionPercent / 100);
+  const simulatedCarKm = input.transport.carKmPerWeek * (1 - carReductionPercent / 100);
   const simulatedShortHaul = Math.max(
     0,
-    input.transport.flightsShortHaulPerYear - shortHaulReduction
+    input.transport.flightsShortHaulPerYear - shortHaulReduction,
   );
-  const simulatedLongHaul = Math.max(
-    0,
-    input.transport.flightsLongHaulPerYear - longHaulReduction
-  );
+  const simulatedLongHaul = Math.max(0, input.transport.flightsLongHaulPerYear - longHaulReduction);
 
   const simulatedInput: FootprintInput = {
     ...input,
@@ -130,7 +126,13 @@ export function ActionSimulator({ input }: ActionSimulatorProps) {
   const simulatedDistance = Math.max(0, simulatedTonnes - TARGET_TONNES);
   const targetProgress =
     distanceToTarget > 0
-      ? Math.min(100, Math.max(0, Math.round(((distanceToTarget - simulatedDistance) / distanceToTarget) * 100)))
+      ? Math.min(
+          100,
+          Math.max(
+            0,
+            Math.round(((distanceToTarget - simulatedDistance) / distanceToTarget) * 100),
+          ),
+        )
       : 100;
 
   return (
@@ -173,7 +175,9 @@ export function ActionSimulator({ input }: ActionSimulatorProps) {
             <p className="text-[10px] text-primary/70">With your selected changes</p>
           </div>
           <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent">Total Saved</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-accent">
+              Total Saved
+            </p>
             <p className="font-display text-2xl font-bold text-accent">
               -{formatTonnes(savedTonnes)}
             </p>
@@ -186,7 +190,9 @@ export function ActionSimulator({ input }: ActionSimulatorProps) {
         {/* Progress towards 1.5C target */}
         <div className="flex flex-col gap-2 rounded-xl bg-primary/5 p-4 ring-1 ring-primary/10">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-medium text-ink">Progress toward 1.5°C Target ({TARGET_TONNES}t)</span>
+            <span className="font-medium text-ink">
+              Progress toward 1.5°C Target ({TARGET_TONNES}t)
+            </span>
             <span className="font-bold text-primary-dark">{targetProgress}%</span>
           </div>
           <ProgressBar
@@ -241,7 +247,7 @@ export function ActionSimulator({ input }: ActionSimulatorProps) {
                       input.transport.carKmPerWeek *
                         52 *
                         (1.92 / 10) * // approximate
-                        (carReductionPercent / 100)
+                        (carReductionPercent / 100),
                     )}
                     /year
                   </p>

@@ -105,13 +105,13 @@ npm run dev        # http://localhost:3000
 
 ### Scripts
 
-| Script | Description |
-|---|---|
-| `npm run dev` | Dev server |
-| `npm run build` / `npm start` | Production build / serve |
-| `npm run test` / `npm run test:coverage` | Unit tests / coverage |
-| `npm run lint` / `npm run typecheck` | ESLint / TypeScript checks |
-| `npm run format` | Prettier |
+| Script                                   | Description                |
+| ---------------------------------------- | -------------------------- |
+| `npm run dev`                            | Dev server                 |
+| `npm run build` / `npm start`            | Production build / serve   |
+| `npm run test` / `npm run test:coverage` | Unit tests / coverage      |
+| `npm run lint` / `npm run typecheck`     | ESLint / TypeScript checks |
+| `npm run format`                         | Prettier                   |
 
 ## Project structure
 
@@ -122,5 +122,3 @@ src/
   lib/         pure domain logic + Zod schemas (+ unit tests)
   middleware.ts  per-request CSP nonce
 ```
-
-

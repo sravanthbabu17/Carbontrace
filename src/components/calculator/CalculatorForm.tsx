@@ -82,7 +82,11 @@ export function CalculatorForm() {
       return true;
     }
     // For the region step the path is empty, so map the root error onto `region`.
-    setErrors(step === 0 ? { region: Object.values(result.errors)[0] ?? 'Please choose an option.' } : result.errors);
+    setErrors(
+      step === 0
+        ? { region: Object.values(result.errors)[0] ?? 'Please choose an option.' }
+        : result.errors,
+    );
     setStatus('Please fix the highlighted fields before continuing.');
     return false;
   }

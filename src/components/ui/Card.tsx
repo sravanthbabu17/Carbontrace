@@ -11,13 +11,7 @@ interface CardProps extends HTMLAttributes<HTMLElement> {
 
 export function Card({ as: Tag = 'div', className, children, ...rest }: CardProps) {
   return (
-    <Tag
-      className={cn(
-        'glass-card rounded-3xl p-6 sm:p-8',
-        className,
-      )}
-      {...rest}
-    >
+    <Tag className={cn('glass-card rounded-3xl p-6 sm:p-8', className)} {...rest}>
       {children}
     </Tag>
   );

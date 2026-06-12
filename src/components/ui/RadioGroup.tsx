@@ -81,7 +81,11 @@ export function RadioGroup<T extends string>({
           );
         })}
       </div>
-      <p id={errorId} aria-live="polite" className="min-h-[1.25rem] text-sm font-medium text-red-700">
+      <p
+        id={errorId}
+        aria-live="polite"
+        className="min-h-[1.25rem] text-sm font-medium text-red-700"
+      >
         {error}
       </p>
     </fieldset>

@@ -13,8 +13,10 @@ const base =
   'disabled:cursor-not-allowed disabled:opacity-50';
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-primary text-white hover:bg-primary-dark focus-visible:ring-primary shadow-sm hover:shadow-md hover:shadow-primary/10',
-  accent: 'bg-accent text-white hover:bg-accent/90 focus-visible:ring-accent shadow-sm hover:shadow-md hover:shadow-accent/10',
+  primary:
+    'bg-primary text-white hover:bg-primary-dark focus-visible:ring-primary shadow-sm hover:shadow-md hover:shadow-primary/10',
+  accent:
+    'bg-accent text-white hover:bg-accent/90 focus-visible:ring-accent shadow-sm hover:shadow-md hover:shadow-accent/10',
   secondary:
     'bg-white text-ink ring-1 ring-primary/20 hover:bg-surface focus-visible:ring-primary shadow-sm hover:shadow-md hover:shadow-primary/5',
   ghost: 'bg-transparent text-ink hover:bg-primary/10 focus-visible:ring-primary',

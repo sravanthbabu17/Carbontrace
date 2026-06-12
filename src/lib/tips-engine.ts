@@ -156,7 +156,8 @@ export function generateTips(
   if (consumption.shopping !== 'minimal') {
     const reducedLevel: Shopping = consumption.shopping === 'frequent' ? 'average' : 'minimal';
     const multiplier = consumption.recycles ? RECYCLING_MULTIPLIER : 1;
-    const saving = (SHOPPING_FACTOR[consumption.shopping] - SHOPPING_FACTOR[reducedLevel]) * multiplier;
+    const saving =
+      (SHOPPING_FACTOR[consumption.shopping] - SHOPPING_FACTOR[reducedLevel]) * multiplier;
     tips.push({
       id: 'buy-less',
       category: 'consumption',

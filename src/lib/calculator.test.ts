@@ -45,7 +45,9 @@ describe('calculateFootprint', () => {
   });
 
   it('produces lower transport emissions for an electric car than petrol', () => {
-    const petrol = calculateFootprint(build({ transport: { carKmPerWeek: 200, carFuel: 'petrol' } }));
+    const petrol = calculateFootprint(
+      build({ transport: { carKmPerWeek: 200, carFuel: 'petrol' } }),
+    );
     const electric = calculateFootprint(
       build({ transport: { carKmPerWeek: 200, carFuel: 'electric' } }),
     );
@@ -134,8 +136,12 @@ describe('heatingFactorFor', () => {
   });
 
   it('makes a heat pump cleaner than resistance heating', () => {
-    expect(heatingFactorFor('heatpump', 'GLOBAL')).toBeCloseTo(GRID_INTENSITY.GLOBAL / HEAT_PUMP_COP);
-    expect(heatingFactorFor('heatpump', 'GLOBAL')).toBeLessThan(heatingFactorFor('electric', 'GLOBAL'));
+    expect(heatingFactorFor('heatpump', 'GLOBAL')).toBeCloseTo(
+      GRID_INTENSITY.GLOBAL / HEAT_PUMP_COP,
+    );
+    expect(heatingFactorFor('heatpump', 'GLOBAL')).toBeLessThan(
+      heatingFactorFor('electric', 'GLOBAL'),
+    );
   });
 
   it('returns zero for no heating', () => {

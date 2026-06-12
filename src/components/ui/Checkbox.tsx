@@ -17,7 +17,9 @@ export function Checkbox({ label, description, checked, onChange }: CheckboxProp
       className={cn(
         'flex cursor-pointer items-start gap-3 rounded-2xl border p-4 transition-colors',
         'has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primary has-[:focus-visible]:ring-offset-2 has-[:focus-visible]:ring-offset-surface',
-        checked ? 'border-primary bg-primary/5 ring-1 ring-primary' : 'border-primary/20 bg-white hover:border-primary/40',
+        checked
+          ? 'border-primary bg-primary/5 ring-1 ring-primary'
+          : 'border-primary/20 bg-white hover:border-primary/40',
       )}
     >
       <input

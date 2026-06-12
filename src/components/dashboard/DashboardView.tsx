@@ -38,9 +38,7 @@ export function DashboardView({ input, history }: DashboardViewProps) {
   const tips = generateTips(input, result, { limit: 6 });
 
   const targetHeadline =
-    target.ratio <= 1
-      ? 'Within the target'
-      : `${formatNumber(target.ratio, 2)}× the target`;
+    target.ratio <= 1 ? 'Within the target' : `${formatNumber(target.ratio, 2)}× the target`;
   const averageHeadline = `${formatPercent(average.percentOfAverage)} of average`;
 
   return (
@@ -53,8 +51,7 @@ export function DashboardView({ input, history }: DashboardViewProps) {
         <div className="grid gap-4 lg:grid-cols-3">
           <StatCard label="Annual footprint" value={formatCo2(result.totalKg)} icon="leaf">
             <p className="text-sm text-ink/70">
-              Across transport, home energy, food, and shopping in{' '}
-              {REGION_LABELS[input.region]}.
+              Across transport, home energy, food, and shopping in {REGION_LABELS[input.region]}.
             </p>
           </StatCard>
           <ComparisonCard

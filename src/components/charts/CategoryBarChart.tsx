@@ -56,11 +56,7 @@ export function CategoryBarChart({ breakdown }: CategoryBarChartProps) {
       }
     >
       <ResponsiveContainer width="100%" height={Math.max(180, data.length * 56)}>
-        <BarChart
-          data={data}
-          layout="vertical"
-          margin={{ top: 4, right: 16, bottom: 4, left: 8 }}
-        >
+        <BarChart data={data} layout="vertical" margin={{ top: 4, right: 16, bottom: 4, left: 8 }}>
           <XAxis type="number" hide />
           <YAxis
             type="category"

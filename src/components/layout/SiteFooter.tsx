@@ -16,8 +16,8 @@ export function SiteFooter() {
             <span className="font-display font-semibold text-ink">CarbonTrace</span>
           </div>
           <p className="max-w-md text-sm text-ink/60">
-            Estimates are for awareness and relative comparison, not audit-grade carbon
-            accounting. Your data stays on your device — nothing is sent to a server.
+            Estimates are for awareness and relative comparison, not audit-grade carbon accounting.
+            Your data stays on your device — nothing is sent to a server.
           </p>
         </div>
         <p className="mt-6 text-xs text-ink/50">

@@ -19,8 +19,7 @@ export default function CalculatorPage() {
           Estimate your footprint
         </h1>
         <p className="mt-2 text-ink/70">
-          A few quick questions. Your answers stay on this device, and you can refine them any
-          time.
+          A few quick questions. Your answers stay on this device, and you can refine them any time.
         </p>
       </header>
       <CalculatorForm />
