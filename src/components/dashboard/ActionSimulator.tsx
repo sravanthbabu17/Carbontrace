@@ -419,15 +419,21 @@ export function ActionSimulator({ input }: ActionSimulatorProps) {
               )}
 
               {canImproveRecycling && (
-                <label className="flex items-center gap-2 text-xs font-medium text-ink cursor-pointer">
+                <div className="flex items-center gap-2">
                   <input
+                    id="sim-recycle-checkbox"
                     type="checkbox"
                     checked={recycles}
                     onChange={(e) => setRecycles(e.target.checked)}
                     className="h-4 w-4 rounded border-primary/20 text-primary focus:ring-primary"
                   />
-                  <span>Start recycling consistently</span>
-                </label>
+                  <label
+                    htmlFor="sim-recycle-checkbox"
+                    className="text-xs font-medium text-ink cursor-pointer"
+                  >
+                    Start recycling consistently
+                  </label>
+                </div>
               )}
             </div>
           )}
