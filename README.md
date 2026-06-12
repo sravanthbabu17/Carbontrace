@@ -85,7 +85,7 @@ We maintain detailed, root-level compliance reports detailing our engineering st
 - **Code Quality**: Strict TypeScript (no `any`), pure side-effect-free calculations in `src/lib`, Zod schemas validation, ESLint + Prettier. See [CODE_QUALITY_STANDARDS.md](./CODE_QUALITY_STANDARDS.md).
 - **Security**: Nonce-based per-request Content-Security-Policy middleware (`src/middleware.ts`), strict browser headers (`next.config.ts`), client-only data model, and local storage validation. See [SECURITY_ARCHITECTURE.md](./SECURITY_ARCHITECTURE.md).
 - **Performance & Efficiency**: React Server Components, lazy-loaded charts, layout shift avoidance, and zero network-overhead calculations. See [PERFORMANCE_REPORT.md](./PERFORMANCE_REPORT.md).
-- **Testing**: **72 unit & component tests** (Vitest) covering the core logic, calculations, formatting, storage layers, and visual components step-by-step. Configured with a coverage threshold checker. See [TESTING_STRATEGY.md](./TESTING_STRATEGY.md).
+- **Testing**: **109 unit & component tests** (Vitest) covering the core logic, calculations, formatting, storage layers, and visual components step-by-step. Configured with a strict 100% coverage threshold checker. See [TESTING_STRATEGY.md](./TESTING_STRATEGY.md).
 - **Accessibility (WCAG 2.1 AA)**: Labelled controls, explicit `id` and `htmlFor` associations (no nested label bugs), keyboard trapping, layout skip links, screen-reader details tables for charts, and reduced-motion support. See [ACCESSIBILITY_COMPLIANCE_REPORT.md](./ACCESSIBILITY_COMPLIANCE_REPORT.md).
 
 ## Getting started
